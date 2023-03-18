@@ -3,6 +3,8 @@ from flask import Blueprint
 from flask import Flask
 from models.user import User
 from models.product import Product
+from models.category import Category
+
 
 from db import db
 
@@ -56,6 +58,26 @@ def seed_db():
     ]
     db.session.add_all(products)
     db.session.commit()
+    
+    categories = [
+        Category(
+            name = "clothing",
+        ), 
+        Category(
+            name = "shoes",
+        ), 
+         Category(
+            name = "hats",
+        ), 
+          Category(
+            name = "accessories",
+        ), 
+    ]
+    db.session.add_all(categories)
+    db.session.commit()
+    
+    
+    
 
 
     print('Tables seeded')

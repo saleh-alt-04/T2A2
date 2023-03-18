@@ -7,6 +7,8 @@ from flask_jwt_extended import JWTManager
 # from models.delivery import *
 from controllers.product_controllers import *
 from controllers.users_controller import *
+from controllers.category_controller import *
+
 
 # from controllers.users_controller import user_bp
 
@@ -33,6 +35,8 @@ ma.init_app(app)
 app.register_blueprint(db_commands)
 app.register_blueprint(product_bp)
 app.register_blueprint(user_bp)
+app.register_blueprint(category_bp)
+
 
 
 
