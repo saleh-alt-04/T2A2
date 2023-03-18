@@ -553,7 +553,7 @@ kotlinCopy code
 
 ## R6 An ERD for your _app_
 
-![Screenshot 2023-03-19 003627](https://user-images.githubusercontent.com/117635352/226111513-e63a3559-ce99-40de-84e0-b891fd2b3904.png)
+![erd](https://user-images.githubusercontent.com/117635352/226112668-c9133b5c-1ca7-4962-b38b-246a54498c3c.png)
 
 
 ## R7 Detail any third party services that your _app_ will use
@@ -567,7 +567,13 @@ kotlinCopy code
 4.  Flask-JWT-Extended - Flask-JWT-Extended is a Flask extension that provides JSON Web Token (JWT) authentication support. JWT is a standard for securely transmitting information between parties as a JSON object. It is used here to authenticate requests to the API, ensuring that only authorized users can access the data.
 
 ## R8 Describe your projects _models_ in terms of the relationships they have with each other
- 
+ A User can have many Orders. This is represented by the user_id foreign key in the Order class.
+
+An Order can have one Product. This is represented by the product_id foreign key in the Order class.
+
+A Category can have many Products. This is represented by the category_id foreign key in the Product class, and the relationship between Category and Product is established by the backref in the Product class.
+
+An Order can have one Delivery. This is represented by the order_id foreign key in the Delivery class.
 ## R9 Discuss the database relations to be implemented in your application
 
 ## R10 Describe the way tasks are allocated and tracked in your project
