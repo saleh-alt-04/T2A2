@@ -2,6 +2,10 @@ from flask_bcrypt import Bcrypt
 from flask import Blueprint
 from flask import Flask
 from models.user import User
+from models.product import Product
+from models.category import Category
+
+
 from db import db
 
 
@@ -41,11 +45,47 @@ def seed_db():
         ),
 
     ]
-   
-
     db.session.add_all(users)
     db.session.commit()
-
+    
+    products = [
+        Product(
+            name = "product1",
+            description = "product 1 description",
+            price = 22.00,
+            qty = 2,
+            category_id=1
+        ), 
+        Product(
+            name = "product2",
+            description = "product 2 description",
+            price = 22.00,
+            qty = 2,
+            category_id=2
+        ), 
+    ]
+    db.session.add_all(products)
+    db.session.commit()
+    
+    categories = [
+        Category(
+            name = "clothing",
+        ), 
+        Category(
+            name = "shoes",
+        ), 
+         Category(
+            name = "hats",
+        ), 
+          Category(
+            name = "accessories",
+        ), 
+    ]
+    db.session.add_all(categories)
+    db.session.commit()
+    
+    
+    
 
 
     print('Tables seeded')
