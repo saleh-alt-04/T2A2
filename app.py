@@ -2,9 +2,6 @@ from flask import Flask, request, jsonify
 from db import db,ma
 from models.product import *
 from flask_jwt_extended import JWTManager
-# from models.user import *
-# from models.category import *
-# from models.delivery import *
 from controllers.product_controllers import *
 from controllers.users_controller import *
 from controllers.category_controller import *
