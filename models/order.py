@@ -1,21 +1,30 @@
 # Order Model
 from db import db,ma
+from models.user import *
+from models.product import *
+from models.delivery import *
+from models.user import *
+from models.order import *
+
 
 class Order(db.Model):
   id = db.Column(db.Integer, primary_key=True)
-  order_id = db.Column(db.String(50), unique=True)
-  user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-  order_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-  total_price = db.Column(db.Float, nullable=False)
+  user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+  product_id = db.Column(db.Integer, db.ForeignKey('product.id'))
+  quantity = db.Column(db.Integer)
+  
 
-  def __init__(self, order_id, user_id, total_price):
-    self.order_id = order_id
+  user = db.relationship('User', backref=db.backref('orders', lazy=True))
+  product = db.relationship('Product', backref=db.backref('orders', lazy=True))
+
+  def __init__(self, user_id, product_id,quantity):
     self.user_id = user_id
-    self.total_price = total_price
+    self.product_id = product_id
+    self.quantity = quantity
 
 class OrderSchema(ma.Schema):
   class Meta:
-    fields = ('id', 'order_id', 'user_id', 'order_date', 'total_price')
+    fields = ('id', 'user_id', 'product_id', 'quantity',)
 
 order_schema = OrderSchema()
 orders_schema = OrderSchema(many=True)
