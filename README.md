@@ -575,5 +575,20 @@ A Category can have many Products. This is represented by the category_id foreig
 
 An Order can have one Delivery. This is represented by the order_id foreign key in the Delivery class.
 ## R9 Discuss the database relations to be implemented in your application
+One user can place many orders, but each order is associated with only one user. Therefore, the User table should have a one-to-many relationship with the Order table. This can be achieved by adding a foreign key column in the Order table that references the id column of the User table.
 
+One order can have multiple products, and each product can belong to multiple orders. This represents a many-to-many relationship between the Order and Product tables. To implement this relationship, a junction table should be created with columns for the order_id and product_id. The order_id column will be a foreign key referencing the id column in the Order table, and the product_id column will be a foreign key referencing the id column in the Product table.
+
+Each product belongs to only one category, but each category can have multiple products. This represents a one-to-many relationship between the Category and Product tables. To implement this relationship, the Product table should have a foreign key column that references the id column in the Category table.
+
+Each order can have only one delivery, but a delivery can be associated with multiple orders. This represents a one-to-many relationship between the Delivery and Order tables. To implement this relationship, the Order table should have a foreign key column that references the id column in the Delivery table.
 ## R10 Describe the way tasks are allocated and tracked in your project
+As a sole developer working on my e-commerce project, I have adopted an Agile approach to manage my tasks effectively. To begin with, I have created a comprehensive backlog of all the features that I need to implement in my app, keeping in mind any dependencies between them.
+
+To keep track of my progress, I use a Trello board where I have arranged the tasks in order of priority and their ability to be completed. The list hierarchy allows me to see which tasks I need to work on first and which ones can wait. I have also added notes to each task, detailing potential challenges or roadblocks I may face while developing them.
+
+Once I start working on a particular feature, I move its corresponding card to the "In Dev" column. After completing the task, I move it to the "Dev Done" column, where it is considered provisionally complete.
+
+Periodically, I revisit the cards in the "Dev Done" column and reassess their status. Depending on the situation, I either move them to the backlog if they require further development, keep them in "Dev Done" if they need more work, or move them to the "Done" column if they are fully completed.
+
+This approach helps me to stay organized and maintain an overview of my progress, ensuring that I am on track to deliver a successful e-commerce app.
