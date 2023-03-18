@@ -553,6 +553,9 @@ kotlinCopy code
 
 ## R6 An ERD for your _app_
 
+![Screenshot 2023-03-19 003627](https://user-images.githubusercontent.com/117635352/226111513-e63a3559-ce99-40de-84e0-b891fd2b3904.png)
+
+
 ## R7 Detail any third party services that your _app_ will use
     
 1.  Flask - Flask is a popular Python web framework that allows developers to quickly create web applications. It is used here to create an instance of the Flask application and define routes for handling incoming requests.
