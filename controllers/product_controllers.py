@@ -2,6 +2,8 @@ from flask import Blueprint, request, jsonify
 from db import db
 from datetime import timedelta
 from models.product import *
+from models.category import Category
+
 
 product_bp = Blueprint('products', '__name__', url_prefix='/')
 
@@ -12,8 +14,9 @@ def add_product():
   description = request.json['description']
   price = request.json['price']
   qty = request.json['qty']
+  category_id = request.json['category_id']
 
-  new_product = Product(name, description, price, qty)
+  new_product = Product(name, description, price, qty,category_id)
 
   db.session.add(new_product)
   db.session.commit()
@@ -23,9 +26,10 @@ def add_product():
 # Get All Products
 @product_bp.route('/product', methods=['GET'])
 def get_products():
-  all_products = Product.query.all()
-  result = products_schema.dump(all_products)
-  return jsonify(result)
+    all_products = Product.query.join(Category).all()
+    result = products_schema.dump(all_products)
+    print (result)    
+    return jsonify(result)
 
 # Get Single Products
 @product_bp.route('/product/<id>', methods=['GET'])

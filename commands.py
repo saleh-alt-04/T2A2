@@ -53,7 +53,15 @@ def seed_db():
             name = "product1",
             description = "product 1 description",
             price = 22.00,
-            qty = 2
+            qty = 2,
+            category_id=1
+        ), 
+        Product(
+            name = "product2",
+            description = "product 2 description",
+            price = 22.00,
+            qty = 2,
+            category_id=2
         ), 
     ]
     db.session.add_all(products)
